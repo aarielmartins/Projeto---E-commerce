@@ -2,7 +2,9 @@ import { BrowserRouter } from 'react-router-dom'
 import Header from './components/Header'
 import { GlobalCss } from './styles'
 import Rotas from './routes'
+import Footer from './components/Footer'
 
+//ORGANIZAÇÃO DE PÁGINAS PELO BROWSERROUTER
 function App() {
   return (
     <>
@@ -12,6 +14,7 @@ function App() {
           <Header />
         </div>
         <Rotas />
+        <Footer />
       </BrowserRouter>
     </>
   )
