@@ -15,6 +15,7 @@ const Banner = () => (
         </Precos>
       </div>
       <Button
+        variant="secundary"
         type="link"
         to="/produto"
         title="Clique aqui para aproveitar esta oferta"

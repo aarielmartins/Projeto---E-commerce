@@ -1,18 +1,33 @@
 import { ButtonContainer, ButtonLink } from './styles'
 
-type Props = {
+export type Props = {
   type: 'button' | 'link'
   title: string
   to?: string
   onClick?: () => void //RECEBE UMA FUNÇÃO SEMARGUMENTO COM RETORNO VAZIO
   children: string
+  variant: 'primary' | 'secundary'
 }
 
-const Button = ({ type, title, to, onClick, children }: Props) => {
-  if (type == 'button') {
-    ;<ButtonContainer type="button" title={title} onClick={onClick}>
-      {children}
-    </ButtonContainer>
+const Button = ({
+  type,
+  title,
+  to,
+  onClick,
+  children,
+  variant = 'primary'
+}: Props) => {
+  if (type === 'button') {
+    return (
+      <ButtonContainer
+        type="button"
+        variant={variant}
+        title={title}
+        onClick={onClick}
+      >
+        {children}
+      </ButtonContainer>
+    )
   }
 
   return (
