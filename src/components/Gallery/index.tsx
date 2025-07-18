@@ -2,29 +2,28 @@ import { useState } from 'react'
 import { Action, Item, Itens, Modal, ModalContent } from './styles'
 import { GalleryItem } from '../../pages/Home'
 import Section from '../Section'
-import magic from '../../assets/images/magic.png'
 import fechar from '../../assets/images/fechar.png'
 import play from '../../assets/images/play.png'
 import zoom from '../../assets/images/zoom.png'
 
-const mock: GalleryItem[] = [
-  {
-    type: 'image',
-    url: magic
-  },
-  {
-    type: 'image',
-    url: magic
-  },
-  {
-    type: 'image',
-    url: magic
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/855QySYhW1s?si=P4dLYCd7G8zE1Gje'
-  }
-]
+// const mock: GalleryItem[] = [
+//   {
+//     type: 'image',
+//     url: magic
+//   },
+//   {
+//     type: 'image',
+//     url: magic
+//   },
+//   {
+//     type: 'image',
+//     url: magic
+//   },
+//   {
+//     type: 'video',
+//     url: 'https://www.youtube.com/embed/855QySYhW1s?si=P4dLYCd7G8zE1Gje'
+//   }
+// ]
 
 type Props = {
   defaultCover: string
