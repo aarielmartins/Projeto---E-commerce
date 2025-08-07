@@ -122,11 +122,11 @@ const Home = () => {
 
   //INTEGRACAO COM A API
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+    fetch('https://ebac-fake-api.vercel.app/api/eplay/promocoes')
       .then((res) => res.json())
       .then((res) => setPromocoes(res))
 
-    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+    fetch('https://ebac-fake-api.vercel.app/api/eplay/em-breve')
       .then((res) => res.json())
       .then((res) => setEmBreve(res))
   }, [])

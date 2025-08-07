@@ -10,7 +10,7 @@ const Banner = () => {
 
   //FUNÇÃO PARA PEGAR A IMAGEM DE BANNER DA API
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/destaque')
+    fetch('https://ebac-fake-api.vercel.app/api/eplay/destaque')
       .then((res) => res.json())
       .then((res) => setGame(res))
   }, [])
