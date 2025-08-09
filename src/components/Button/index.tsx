@@ -5,8 +5,8 @@ export type Props = {
   title: string
   to?: string
   onClick?: () => void //RECEBE UMA FUNÇÃO SEMARGUMENTO COM RETORNO VAZIO
-  children: string
-  variant: 'primary' | 'secundary'
+  children?: string
+  variant?: 'primary' | 'secundary'
 }
 
 const Button = ({

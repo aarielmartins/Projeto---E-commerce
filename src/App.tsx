@@ -5,6 +5,7 @@ import { store } from './store'
 import Header from './components/Header'
 import Rotas from './routes'
 import Footer from './components/Footer'
+import Cart from './components/Cart'
 
 //ORGANIZAÇÃO DE PÁGINAS PELO BROWSERROUTER
 function App() {
@@ -17,6 +18,7 @@ function App() {
         </div>
         <Rotas />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   )
