@@ -4,55 +4,58 @@ import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
 import { Game } from '../Home'
+import { useGetGameByIdQuery } from '../../services/api'
 
 const Product = () => {
   const { id } = useParams()
+  const { data: game, isLoading, error } = useGetGameByIdQuery(id!)
 
-  const [game, setGame] = useState<Game>()
+  // const [game, setGame] = useState<Game>()
 
-  //O ID É USADO COMO PARÂMETRO PARA PEGAR AS REFERêNCIAS DA API
+  // O ID É USADO COMO PARÂMETRO PARA PEGAR AS REFERêNCIAS DA API
   // useEffect(() => {
   //   fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/${id}`)
   //     .then((res) => res.json())
   //     .then((res) => setGame(res))
   // }, [id])
 
-  const endpoints = [
-    'https://ebac-fake-api.vercel.app/api/eplay/promocoes',
-    'https://ebac-fake-api.vercel.app/api/eplay/acao',
-    'https://ebac-fake-api.vercel.app/api/eplay/destaque',
-    'https://ebac-fake-api.vercel.app/api/eplay/em-breve',
-    'https://ebac-fake-api.vercel.app/api/eplay/esportes',
-    'https://ebac-fake-api.vercel.app/api/eplay/luta',
-    'https://ebac-fake-api.vercel.app/api/eplay/rpg',
-    'https://ebac-fake-api.vercel.app/api/eplay/simulacao'
-  ]
+  // const endpoints = [
+  //   'https://ebac-fake-api.vercel.app/api/eplay/promocoes',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/acao',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/destaque',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/em-breve',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/esportes',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/luta',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/rpg',
+  //   'https://ebac-fake-api.vercel.app/api/eplay/simulacao'
+  // ]
 
-  // const [loading, setLoading] = useState(true)
+  // useEffect(() => {
+  //   const fetchAllGames = async () => {
+  //     try {
+  //       const responses = await Promise.all(endpoints.map((url) => fetch(url)))
+  //       const gamesArrays = await Promise.all(
+  //         responses.map((res) => res.json())
+  //       )
+  //       const allGames: Game[] = gamesArrays.flat()
 
-  useEffect(() => {
-    const fetchAllGames = async () => {
-      try {
-        const responses = await Promise.all(endpoints.map((url) => fetch(url)))
-        const gamesArrays = await Promise.all(
-          responses.map((res) => res.json())
-        )
-        const allGames: Game[] = gamesArrays.flat()
+  //       const foundGame = allGames.find((g) => g.id === Number(id))
+  //       setGame(foundGame)
+  //     } catch (error) {
+  //       console.error('Erro ao carregar jogos:', error)
+  //     }
+  //   }
 
-        const foundGame = allGames.find((g) => g.id === Number(id))
-        setGame(foundGame)
-      } catch (error) {
-        console.error('Erro ao carregar jogos:', error)
-      }
-    }
+  //   fetchAllGames()
+  // }, [])
 
-    fetchAllGames()
-  }, [])
+  // if (!game) {
+  //   return <h3>Carregando...</h3>
+  // }
 
-  // if (loading) {
-  if (!game) {
-    return <h3>Carregando...</h3>
-  }
+  if (isLoading) return <p>Carregando...</p>
+  if (error) return <p>Erro ao carregar o jogo</p>
+  if (!game) return <p>Jogo não encontrado</p>
 
   return (
     <>

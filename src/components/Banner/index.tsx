@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Imagem, Precos, Titulo } from './styles'
-import { Game } from '../../pages/Home'
+import { formataPreco } from '../ProductsList'
+import { useGetFeaturedGameQuery } from '../../services/api'
 import Tag from '../Tag'
 import Button from '../Button'
-import { formataPreco } from '../ProductsList'
 
 const Banner = () => {
-  const [game, setGame] = useState<Game>()
+  //ADICIONA O FETCH DA API PELA REQUISIÇÃO FEITA EM SERVICES
+  const { data: game, isLoading } = useGetFeaturedGameQuery()
 
   //FUNÇÃO PARA PEGAR A IMAGEM DE BANNER DA API
-  useEffect(() => {
-    fetch('https://ebac-fake-api.vercel.app/api/eplay/destaque')
-      .then((res) => res.json())
-      .then((res) => setGame(res))
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://ebac-fake-api.vercel.app/api/eplay/destaque')
+  //     .then((res) => res.json())
+  //     .then((res) => setGame(res))
+  // }, [])
 
   if (!game) {
     return <h3>Carregando...</h3>
