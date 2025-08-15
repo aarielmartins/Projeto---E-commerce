@@ -17,10 +17,11 @@ export const Action = styled.div`
 
 export const Itens = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 `
 
 export const Item = styled.li`
-  margin-right: 16px;
   position: relative;
 
   /* O ">" FUNCIONA PARA EDITAR APENAS O FILHO DIRETO DO LI */
