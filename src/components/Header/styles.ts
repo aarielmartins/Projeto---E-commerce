@@ -20,10 +20,6 @@ export const HeaderBar = styled.header`
     display: flex;
     align-items: center;
   }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    display: none;
-  }
 `
 
 export const Links = styled.ul`
