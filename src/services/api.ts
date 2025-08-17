@@ -17,6 +17,40 @@ const categories = [
   'simulacao'
 ]
 
+type Product = {
+  id: number
+  price: number
+}
+
+type PurchasePayload = {
+  products: Product[]
+  billing: {
+    name: string
+    email: string
+    document: string
+  }
+  delivery: {
+    email: string
+  }
+  payment: {
+    card: {
+      active: boolean
+      owner?: {
+        name: string
+        document: string
+      }
+      name?: string
+      number?: string
+      expires?: {
+        month: number
+        year: number
+      }
+      code?: number
+    }
+    installments: number
+  }
+}
+
 //FUNÇÃO USADA PARA CRIAR UMA SLICE DE API, OU SEJA, BUSCA DADOS
 //WEB COM REDUX TOOLKIT QUERY E GERA ENDPOINTS PRONTOS PARA USAR COM HOOKS
 //FETCHBASEQUERY É UMA FUNÇÃO QUE JÁ USA O FETCH POR BAIXO
@@ -81,6 +115,15 @@ const api = createApi({
           }
         }
       }
+    }),
+    //CRIANDO UMA API PARA FAZER O POST DOS ITENS NO CARRINHO
+    //NA PÁGINA CHECKOUT
+    purchase: builder.mutation<any, PurchasePayload>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
@@ -95,7 +138,8 @@ export const {
   useGetSimulationGamesQuery,
   useGetFightGamesQuery,
   useGetRpgGamesQuery,
-  useGetGameByIdQuery
+  useGetGameByIdQuery,
+  usePurchaseMutation
 } = api
 
 export default api
