@@ -3,10 +3,15 @@ import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
 import { useGetGameByIdQuery } from '../../services/api'
+import Loader from '../../components/Loaders'
+
+type GameParams = {
+  id: string
+}
 
 const Product = () => {
-  const { id } = useParams()
-  const { data: game, isLoading, error } = useGetGameByIdQuery(id!)
+  const { id } = useParams() as GameParams
+  const { data: game, isLoading, error } = useGetGameByIdQuery(id)
 
   // const [game, setGame] = useState<Game>()
 
@@ -51,9 +56,11 @@ const Product = () => {
   //   return <h3>Carregando...</h3>
   // }
 
-  if (isLoading) return <p>Carregando...</p>
+  if (isLoading) return <Loader />
   if (error) return <p>Erro ao carregar o jogo</p>
-  if (!game) return <p>Jogo não encontrado</p>
+  if (!game) {
+    return <Loader />
+  }
 
   return (
     <>

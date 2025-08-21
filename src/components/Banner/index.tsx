@@ -1,8 +1,9 @@
-import * as S from './styles'
 import { useGetFeaturedGameQuery } from '../../services/api'
+import { parseToBrl } from '../../utils'
+import * as S from './styles'
 import Tag from '../Tag'
 import Button from '../Button'
-import { parseToBrl } from '../../utils'
+import Loader from '../Loaders'
 
 const Banner = () => {
   //ADICIONA O FETCH DA API PELA REQUISIÇÃO FEITA EM SERVICES
@@ -16,7 +17,7 @@ const Banner = () => {
   // }, [])
 
   if (!game) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (
