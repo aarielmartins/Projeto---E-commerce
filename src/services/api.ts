@@ -4,7 +4,6 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError
 } from '@reduxjs/toolkit/query/react'
-import { Game } from '../pages/Home'
 
 const categories = [
   'promocoes',
@@ -49,6 +48,12 @@ type PurchasePayload = {
     }
     installments: number
   }
+}
+
+//TIPO CRIADO PARA USAR NA API DO CHECKOUT
+//BASEADO NO PRODUTO DESSA API MESMO, QUE É UM ORDERID
+type PurchaseResponse = {
+  orderId: string
 }
 
 //FUNÇÃO USADA PARA CRIAR UMA SLICE DE API, OU SEJA, BUSCA DADOS
@@ -118,7 +123,7 @@ const api = createApi({
     }),
     //CRIANDO UMA API PARA FAZER O POST DOS ITENS NO CARRINHO
     //NA PÁGINA CHECKOUT
-    purchase: builder.mutation<any, PurchasePayload>({
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
       query: (body) => ({
         url: 'checkout',
         method: 'POST',
